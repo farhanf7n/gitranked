@@ -3,7 +3,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Star, GitFork, AlertCircle, ExternalLink } from "lucide-react";
+import {
+  Star,
+  GitFork,
+  AlertCircle,
+  ExternalLink,
+  Calendar,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Repository } from "@/lib/types";
 
@@ -191,6 +197,13 @@ export function RepoCard({ repo, layout = "grid", index = 0 }: RepoCardProps) {
                 {formatCount(repo.openIssuesCount)}
               </span>
             )}
+            <span className="flex items-center gap-1">
+              <Calendar className="w-3.5 h-3.5" />
+              {new Date(repo.updatedAt).toLocaleDateString(undefined, {
+                month: "short",
+                year: "2-digit",
+              })}
+            </span>
           </div>
 
           {repo.primaryLanguage && (
