@@ -2,7 +2,7 @@
 
 <br />
 
-# GitHunt
+# GitRanked
 
 **Discover the most starred GitHub repositories from any date.**
 
