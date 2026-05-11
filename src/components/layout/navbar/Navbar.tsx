@@ -67,7 +67,7 @@ export function Navbar() {
           {/* Right actions */}
           <div className="flex items-center gap-2">
             <a
-              href="https://github.com"
+              href="https://github.com/farhanf7n/gitranked"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"

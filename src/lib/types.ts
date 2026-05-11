@@ -68,6 +68,7 @@ export interface SearchResult {
   totalCount: number;
   hasNextPage: boolean;
   endCursor: string | null;
+  tokenRequired?: boolean;
 }
 
 export interface RateLimitInfo {

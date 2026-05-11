@@ -16,6 +16,21 @@ export async function GET(request: NextRequest) {
     const customDate = searchParams.get("date") ?? undefined;
     const clientToken = request.headers.get("X-GitHub-Token") ?? undefined;
 
+    // GitHub GraphQL requires authentication — return a structured response
+    // so the UI can prompt the user to add a token instead of showing a 500.
+    if (!clientToken && !process.env.GITHUB_TOKEN) {
+      return NextResponse.json(
+        {
+          repositories: [],
+          totalCount: 0,
+          hasNextPage: false,
+          endCursor: null,
+          tokenRequired: true,
+        },
+        { status: 200 },
+      );
+    }
+
     const date = getDateRange(timeRange, customDate);
 
     const result = await searchRepositories({

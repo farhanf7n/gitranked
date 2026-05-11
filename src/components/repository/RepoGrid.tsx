@@ -14,6 +14,7 @@ interface RepoGridProps {
   hasNextPage?: boolean;
   isFetchingNextPage?: boolean;
   onLoadMore?: () => void;
+  tokenRequired?: boolean;
 }
 
 export function RepoGrid({
@@ -23,6 +24,7 @@ export function RepoGrid({
   hasNextPage,
   isFetchingNextPage,
   onLoadMore,
+  tokenRequired,
 }: RepoGridProps) {
   const observerRef = useRef<IntersectionObserver | null>(null);
 
@@ -60,7 +62,7 @@ export function RepoGrid({
   }
 
   if (!repositories.length) {
-    return <EmptyState />;
+    return <EmptyState tokenRequired={tokenRequired} />;
   }
 
   return (

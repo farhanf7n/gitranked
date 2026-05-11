@@ -39,6 +39,7 @@ export default function HomeClient() {
 
   const repositories = data?.pages.flatMap((p) => p.repositories) ?? [];
   const totalCount = data?.pages[0]?.totalCount;
+  const tokenRequired = data?.pages[0]?.tokenRequired ?? false;
 
   const updateUrl = useCallback(
     (partial: Partial<FilterState>) => {
@@ -151,6 +152,7 @@ export default function HomeClient() {
           hasNextPage={hasNextPage}
           isFetchingNextPage={isFetchingNextPage}
           onLoadMore={fetchNextPage}
+          tokenRequired={tokenRequired}
         />
       </section>
     </div>
